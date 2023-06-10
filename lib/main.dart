@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
-      theme: AppTheme.darkTheme(),
+      theme: AppTheme.mainTheme(),
       home: const BottomNavigation(),
     );
   }
@@ -40,9 +40,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter App'),
-      ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -53,21 +50,21 @@ class _BottomNavigationState extends State<BottomNavigation> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
+              icon: Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: Color(0xff358856)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pageview),
-            label: 'Page 1',
-          ),
+              icon: Icon(Icons.pageview),
+              label: 'Page 1',
+              backgroundColor: Color(0xff358856)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pages),
-            label: 'Page 2',
-          ),
+              icon: Icon(Icons.pages),
+              label: 'Page 2',
+              backgroundColor: Color(0xff358856)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Page 3',
-          ),
+              icon: Icon(Icons.info),
+              label: 'Page 3',
+              backgroundColor: Color(0xff358856)),
         ],
       ),
     );
