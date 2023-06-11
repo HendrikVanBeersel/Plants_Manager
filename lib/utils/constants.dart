@@ -8,4 +8,10 @@ enum Sunlight{
   partialSun,
   shade
 }
-  
+enum PlantHealth{
+  healthy,
+  struggling,
+  sick,
+  dying,
+  dead
+}
