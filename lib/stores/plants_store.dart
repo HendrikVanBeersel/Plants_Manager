@@ -5,12 +5,13 @@ import '../models/plant.dart';
 
 class PlantsStore extends ChangeNotifier {
   Map<String, Plant> _plants = {};
-  List<PlantSpecies> _species = [];
+  Map<int, PlantSpecies> _species = {};
   Map<String, bool> _wasUpdated = {"plantsInRoom": false};
   Map<String, List<Plant>> _plantsInRooms = {};
 
   List<Plant> get allPlants => _plants.entries.map((e) => e.value).toList();
-  List<PlantSpecies> get allSpecies => _species;
+  List<PlantSpecies> get allSpecies =>
+      _species.entries.map((e) => e.value).toList();
 
   void addPlant(Plant plant) {
     _plants.addAll({plant.nickname: plant});
@@ -19,13 +20,17 @@ class PlantsStore extends ChangeNotifier {
   }
 
   void addSpecies(PlantSpecies species) {
-    _species.add(species);
+    _species.addAll({species.speciesID: species});
     _wasUpdated.updateAll((key, value) => value = true);
     notifyListeners();
   }
 
   Plant? getPlant(String plantNickname) {
     return _plants[plantNickname];
+  }
+
+  PlantSpecies getSpecies(int speciesID) {
+    return _species[speciesID]!;
   }
 
   Map<String, List<Plant>> getPlantsInRooms() {
@@ -58,5 +63,9 @@ class PlantsStore extends ChangeNotifier {
       }
     }
     return thirstyPlants;
+  }
+
+  PlantSpecies getSpeciesOfPlant(Plant plant) {
+    return _species[plant.speciesID]!;
   }
 }

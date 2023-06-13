@@ -1,4 +1,5 @@
 import 'package:plants_manager/models/plant_species.dart';
+import 'package:plants_manager/stores/plants_store.dart';
 import 'package:plants_manager/utils/constants.dart';
 
 class Plant {
@@ -50,7 +51,10 @@ class Plant {
         health = plant.health;
 
   static int _calculateWaterFrequency(int speciesID) {
+    PlantSpecies species = PlantsStore().getSpecies(speciesID);
+    int? waterFrequency = species.waterFrequency;
     if (waterFrequency == null) {
+      WaterNeed waterNeed = species.waterNeed;
       switch (waterNeed) {
         case WaterNeed.low:
           return 31;
