@@ -4,7 +4,7 @@ import 'package:plants_manager/utils/constants.dart';
 class Plant {
   int speciesID;
   bool isOutdoor;
-  String? nickname;
+  String nickname;
   String? imageUrl;
   String? location;
   int waterFrequency;
@@ -16,7 +16,7 @@ class Plant {
   Plant(
       {required this.speciesID,
       required this.isOutdoor,
-      this.nickname,
+      required this.nickname,
       this.imageUrl,
       this.location,
       this.lastWatered,
