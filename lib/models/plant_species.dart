@@ -9,6 +9,7 @@ class PlantSpecies {
   WaterNeed waterNeed;
   Sunlight sunlight;
   int? waterFrequency;
+  int speciesID;
 
   PlantSpecies(
       {required this.name,
@@ -17,7 +18,8 @@ class PlantSpecies {
       this.imageUrl,
       required this.waterNeed,
       required this.sunlight,
-      this.waterFrequency});
+      this.waterFrequency,
+      required this.speciesID});
 
   PlantSpecies.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -26,5 +28,16 @@ class PlantSpecies {
         imageUrl = json['imageUrl'],
         waterNeed = WaterNeed.values[json['waterNeed']],
         sunlight = Sunlight.values[json['sunlight']],
-        waterFrequency = json['waterFrequency'];
+        waterFrequency = json['waterFrequency'],
+        speciesID = json['speciesID'];
+
+  PlantSpecies.toJson(PlantSpecies plantSpecies)
+      : name = plantSpecies.name,
+        latinName = plantSpecies.latinName,
+        description = plantSpecies.description,
+        imageUrl = plantSpecies.imageUrl,
+        waterNeed = plantSpecies.waterNeed,
+        sunlight = plantSpecies.sunlight,
+        waterFrequency = plantSpecies.waterFrequency,
+        speciesID = plantSpecies.speciesID;
 }
