@@ -1,4 +1,3 @@
-import 'package:plants_manager/models/plant_species.dart';
 import 'package:plants_manager/stores/plants_store.dart';
 import 'package:plants_manager/utils/constants.dart';
 

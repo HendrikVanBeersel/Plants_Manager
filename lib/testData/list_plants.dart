@@ -7,8 +7,7 @@ Plant plantAloevera = Plant(
     speciesID: 1,
     isOutdoor: false,
     nickname: 'Aloe Vera',
-    imageUrl:
-        'https://cdn.pixabay.com/photo/2017/02/08/17/24/aloe-2042901_960_720.jpg',
+    imageUrl: 'lib\testData\testImges\aloe-vera.jpg',
     location: 'Living Room',
     waterFrequency: 14,
     lastWatered: '2021-08-01',
@@ -20,8 +19,7 @@ Plant plantBasil = Plant(
     speciesID: 2,
     isOutdoor: false,
     nickname: 'Basil',
-    imageUrl:
-        'https://cdn.pixabay.com/photo/2017/08/05/18/29/basil-2583210_960_720.jpg',
+    imageUrl: 'lib\testData\testImges\basil.jpg',
     location: 'Kitchen',
     waterFrequency: 3,
     lastWatered: '2021-08-01',
@@ -33,8 +31,7 @@ Plant plantCactus = Plant(
     speciesID: 3,
     isOutdoor: false,
     nickname: 'Cactus',
-    imageUrl:
-        'https://cdn.pixabay.com/photo/2017/02/08/17/24/cactus-2042900_960_720.jpg',
+    imageUrl: 'lib\testData\testImges\angel-wings-cactus.jpg',
     location: 'Living Room',
     waterFrequency: 30,
     lastWatered: '2021-08-01',
