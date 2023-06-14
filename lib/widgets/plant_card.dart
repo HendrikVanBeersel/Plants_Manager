@@ -15,6 +15,14 @@ class _PlantCardState extends State<PlantCard> {
 
   @override
   Widget build(BuildContext context) {
+    Widget imageWidget;
+    if (widget.plant.imageUrl != null) {
+      imageWidget = Image.asset(
+        widget.plant.imageUrl!,
+      );
+    } else {
+      imageWidget = Image.asset('assets/images/placeholder.png');
+    }
     return Card(
       color: isSelected ? Colors.green : Colors.white,
       child: InkWell(
@@ -27,7 +35,13 @@ class _PlantCardState extends State<PlantCard> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              imageWidget,
               Text(widget.plant.nickname),
+              Text(widget.plant.getSpecies.name),
+              Text(widget.plant.getSpecies.waterNeed.toString()),
+              Text(widget.plant.getSpecies.sunlight.toString()),
+              Text(widget.plant.isOutdoor.toString()),
+              Text(widget.plant.health.toString()),
             ],
           ),
         ),
