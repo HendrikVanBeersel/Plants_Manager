@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AddPlantScreen extends StatelessWidget {
+class AddPlantScreen extends StatefulWidget {
+  const AddPlantScreen({super.key});
+
+  @override
+  _AddPlantScreenState createState() => _AddPlantScreenState();
+}
+
+class _AddPlantScreenState extends State<AddPlantScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,7 +15,17 @@ class AddPlantScreen extends StatelessWidget {
         title: Text('add plant'),
       ),
       body: Center(
-        child: Text('add plant Page'),
+        child: Column(
+          children: [
+            Text('Add Plant Page'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/plant_info');
+              },
+              child: Text('Go to plant info'),
+            ),
+          ],
+        ),
       ),
     );
   }
