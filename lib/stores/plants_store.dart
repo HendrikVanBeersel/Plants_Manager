@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:plants_manager/models/plant_species.dart';
+import 'package:plants_manager/testData/list_plants.dart';
 
 import '../models/plant.dart';
 import '../utils/constants.dart';
 
 class PlantsStore extends ChangeNotifier {
-  Map<String, Plant> _plants = {};
-  Map<int, PlantSpecies> _species = {};
+  Map<String, Plant> _plants = plantMap;
+  Map<int, PlantSpecies> _species = speciesMap;
   Map<String, bool> _wasUpdated = {"plantsInRoom": false};
   Map<String, List<Plant>> _plantsInRooms = {};
 
