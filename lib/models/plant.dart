@@ -8,7 +8,7 @@ class Plant {
   String nickname;
   String? imageUrl;
   String? location;
-  int waterFrequency;
+  int? waterFrequency;
   String? lastWatered;
   String? nextWatering;
   String? notes;
@@ -23,8 +23,8 @@ class Plant {
       this.lastWatered,
       this.nextWatering,
       this.notes,
-      this.health = PlantHealth.healthy})
-      : waterFrequency = _calculateWaterFrequency(speciesID);
+      this.health = PlantHealth.healthy,
+      required this.waterFrequency});
 
   Plant.fromJson(Map<String, dynamic> json)
       : speciesID = json['speciesID'],
@@ -49,23 +49,17 @@ class Plant {
         nextWatering = plant.nextWatering,
         notes = plant.notes,
         health = plant.health;
+  set setHealth(PlantHealth newHealth) => health = newHealth;
+  set setWaterFrequency(int newFrequency) => waterFrequency = newFrequency;
 
-  static int _calculateWaterFrequency(int speciesID) {
-    PlantSpecies species = PlantsStore().getSpecies(speciesID);
-    int? waterFrequency = species.waterFrequency;
-    if (waterFrequency == null) {
-      WaterNeed waterNeed = species.waterNeed;
-      switch (waterNeed) {
-        case WaterNeed.low:
-          return 31;
-        case WaterNeed.medium:
-          return 7;
-        case WaterNeed.high:
-          return 1;
-        default:
-        //needs to throw an error
-      }
-    }
-    return waterFrequency!;
-  }
+  get getHealth => health;
+  get getWaterFrequency => waterFrequency;
+  get getSpecies => PlantsStore().getSpecies(speciesID);
+  get getNickname => nickname;
+  get getIsOutdoor => isOutdoor;
+  get getLocation => location;
+  get getLastWatered => lastWatered;
+  get getNextWatering => nextWatering;
+  get getNotes => notes;
+  get getImageUrl => imageUrl;
 }

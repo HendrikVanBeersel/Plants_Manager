@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:plants_manager/stores/plants_store.dart';
+import 'package:provider/provider.dart';
 import 'screens/thirsty_plants_screen.dart';
 import 'screens/add_plant_screen.dart';
 import 'screens/rooms_screen.dart';
 import 'screens/all_plants_screen.dart';
 import 'themes/app_theme.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => PlantsStore()),
+        ],
+        child: const MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

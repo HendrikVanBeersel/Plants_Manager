@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plants_manager/models/plant_species.dart';
 
 import '../models/plant.dart';
+import '../utils/constants.dart';
 
 class PlantsStore extends ChangeNotifier {
   Map<String, Plant> _plants = {};
@@ -14,6 +15,8 @@ class PlantsStore extends ChangeNotifier {
       _species.entries.map((e) => e.value).toList();
 
   void addPlant(Plant plant) {
+    plant.waterFrequency =
+        _calculateWaterFrequency(getSpecies(plant.speciesID));
     _plants.addAll({plant.nickname: plant});
     _wasUpdated.updateAll((key, value) => value = true);
     notifyListeners();
@@ -67,5 +70,23 @@ class PlantsStore extends ChangeNotifier {
 
   PlantSpecies getSpeciesOfPlant(Plant plant) {
     return _species[plant.speciesID]!;
+  }
+
+  static int _calculateWaterFrequency(PlantSpecies species) {
+    int? waterFrequency = species.waterFrequency;
+    if (waterFrequency == null) {
+      WaterNeed waterNeed = species.waterNeed;
+      switch (waterNeed) {
+        case WaterNeed.low:
+          return 31;
+        case WaterNeed.medium:
+          return 7;
+        case WaterNeed.high:
+          return 1;
+        default:
+        //needs to throw an error
+      }
+    }
+    return waterFrequency!;
   }
 }
