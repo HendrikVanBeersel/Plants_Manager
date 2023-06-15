@@ -8,9 +8,9 @@ class Plant {
   String? imageUrl;
   String? location;
   int? waterFrequency;
-  String? lastWatered;
-  String? nextWatering;
-  String? notes;
+  DateTime? lastWatered;
+  DateTime? nextWatering;
+  List<String>? notes;
   PlantHealth health;
 
   Plant(

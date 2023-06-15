@@ -40,4 +40,9 @@ class PlantSpecies {
         sunlight = plantSpecies.sunlight,
         waterFrequency = plantSpecies.waterFrequency,
         speciesID = plantSpecies.speciesID;
+
+  get getName => name;
+  get getLatinName => latinName;
+  get getDescription => description;
+  get getImageUrl => imageUrl;
 }
