@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plants_manager/stores/plants_store.dart';
+import 'package:plants_manager/themes/app_colors.dart';
 import 'package:provider/provider.dart';
 import 'screens/thirsty_plants_screen.dart';
 import 'screens/add_plant_screen.dart';
@@ -61,19 +62,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
-              backgroundColor: Color(0xff358856)),
+              backgroundColor: AppColors.primaryColor),
           BottomNavigationBarItem(
               icon: Icon(Icons.pageview),
               label: 'Page 1',
-              backgroundColor: Color(0xff358856)),
+              backgroundColor: AppColors.primaryColor),
           BottomNavigationBarItem(
               icon: Icon(Icons.pages),
               label: 'Page 2',
-              backgroundColor: Color(0xff358856)),
+              backgroundColor: AppColors.primaryColor),
           BottomNavigationBarItem(
               icon: Icon(Icons.info),
               label: 'Page 3',
-              backgroundColor: Color(0xff358856)),
+              backgroundColor: AppColors.primaryColor),
         ],
       ),
     );
