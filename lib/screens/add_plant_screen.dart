@@ -49,13 +49,11 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                   borderRadius: BorderRadius.circular(32),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(_addButtonIsPressed ? 4.0 : 8.0),
-                  child: SvgPicture.asset(
-                    'assets/icons/plus.svg',
-                    width: _addButtonIsPressed ? 40 : 32,
-                    height: _addButtonIsPressed ? 40 : 32,
-                  ),
-                ),
+                    padding: EdgeInsets.all(_addButtonIsPressed ? 4.0 : 8.0),
+                    child: Icon(
+                      Icons.add_circle,
+                      size: _addButtonIsPressed ? 40 : 32,
+                    )),
               ),
             ),
             const Text('Add a Plant'),

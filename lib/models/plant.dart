@@ -8,8 +8,8 @@ class Plant {
   String? imageUrl;
   String? location;
   int? waterFrequency;
-  DateTime? lastWatered;
-  DateTime? nextWatering;
+  String? lastWatered;
+  String? nextWatering;
   List<String>? notes;
   PlantHealth health;
 

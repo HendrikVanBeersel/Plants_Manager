@@ -12,7 +12,7 @@ Plant plantAloevera = Plant(
     waterFrequency: 14,
     lastWatered: '2021-08-01',
     nextWatering: '2021-08-15',
-    notes: 'This plant is very sensitive to overwatering.',
+    notes: ['This plant is very sensitive to overwatering.'],
     health: PlantHealth.healthy);
 
 Plant plantBasil = Plant(
@@ -24,7 +24,7 @@ Plant plantBasil = Plant(
     waterFrequency: 3,
     lastWatered: '2021-08-01',
     nextWatering: '2021-08-04',
-    notes: 'This plant is very sensitive to overwatering.',
+    notes: ['This plant is very sensitive to overwatering.'],
     health: PlantHealth.healthy);
 
 Plant plantCactus = Plant(
@@ -36,7 +36,7 @@ Plant plantCactus = Plant(
     waterFrequency: 30,
     lastWatered: '2021-08-01',
     nextWatering: '2021-08-31',
-    notes: 'This plant is very sensitive to overwatering.',
+    notes: ['This plant is very sensitive to overwatering.'],
     health: PlantHealth.healthy);
 Plant plantDaisy =
     Plant(isOutdoor: true, speciesID: 4, nickname: 'Daisy', waterFrequency: 7);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plants_manager/models/plant_species.dart';
 import 'package:plants_manager/stores/plants_store.dart';
 import 'package:plants_manager/utils/constants.dart';
+import 'package:plants_manager/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class AddPlantForm extends StatefulWidget {
@@ -31,6 +32,106 @@ class _AddPlantFormState extends State<AddPlantForm> {
 
   void _closePopup() {
     Navigator.of(context).pop();
+  }
+
+  getSpeciesForm() {
+    return Column(children: [
+      const SizedBox(height: 10),
+      Row(
+        children: [
+          const Text("Species name*:"),
+          const SizedBox(width: 10),
+          Expanded(
+            child: TextField(
+              decoration: const InputDecoration(
+                hintText: 'Species name',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  speciesName = value;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      Row(
+        children: [
+          const Text("Latin name:"),
+          const SizedBox(width: 10),
+          Expanded(
+            child: TextField(
+              decoration: const InputDecoration(
+                hintText: 'Latin name',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  latinName = value;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      Column(
+        children: [
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text("description:", textAlign: TextAlign.left),
+          ),
+          TextField(
+            maxLines: null,
+            decoration: const InputDecoration(
+              hintText: 'description',
+              border: OutlineInputBorder(),
+            ),
+            onChanged: (value) {
+              setState(() {
+                description = value;
+              });
+            },
+          ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      Row(children: [
+        DropdownMenu<WaterNeed?>(
+            label: const Text('Water need'),
+            initialSelection: WaterNeed.high,
+            dropdownMenuEntries: const [
+              DropdownMenuEntry(value: WaterNeed.high, label: 'high'),
+              DropdownMenuEntry(value: WaterNeed.medium, label: 'medium'),
+              DropdownMenuEntry(value: WaterNeed.low, label: 'low')
+            ],
+            onSelected: (WaterNeed? value) {
+              setState(() {
+                waterNeed = value!;
+              });
+            }),
+        const SizedBox(width: 10),
+        getWaterNeedIcon(waterNeed),
+        const SizedBox(width: 10),
+        DropdownMenu<Sunlight>(
+          label: const Text('Light need'),
+          dropdownMenuEntries: const [
+            DropdownMenuEntry(value: Sunlight.fullSun, label: 'full sun'),
+            DropdownMenuEntry(value: Sunlight.partialSun, label: 'partial sun'),
+            DropdownMenuEntry(value: Sunlight.shade, label: 'shade')
+          ],
+          onSelected: (Sunlight? value) {
+            setState(() {
+              sunlight = value!;
+            });
+          },
+        ),
+        const SizedBox(width: 10),
+        getSunlightIcon(sunlight),
+      ]),
+    ]);
   }
 
   @override
@@ -74,46 +175,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
               },
               requestFocusOnTap: true,
             ),
-            if (selectedSpecies == null)
-              Row(
-                children: [
-                  const Text("Species name*:"),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        hintText: 'Species name',
-                        border: OutlineInputBorder(),
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          speciesName = value;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            if (selectedSpecies == null)
-              Row(
-                children: [
-                  const Text("Latin name:"),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        hintText: 'Latin name',
-                        border: OutlineInputBorder(),
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          latinName = value;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
+            if (selectedSpecies == null) getSpeciesForm(),
             const SizedBox(height: 10),
             Row(
               children: [
