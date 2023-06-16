@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:plants_manager/models/plant.dart';
 import 'package:plants_manager/models/plant_species.dart';
 import 'package:plants_manager/stores/plants_store.dart';
+import 'package:plants_manager/themes/app_colors.dart';
 import 'package:plants_manager/utils/constants.dart';
 import 'package:plants_manager/utils/utils.dart';
+import 'package:plants_manager/widgets/happy_plants.dart';
 import 'package:provider/provider.dart';
 
 class AddPlantForm extends StatefulWidget {
@@ -33,6 +35,16 @@ class _AddPlantFormState extends State<AddPlantForm> {
 
   void _closePopup() {
     Navigator.of(context).pop();
+  }
+
+  void _addedPlant() {
+    Navigator.of(context).pop();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const HappyPlants();
+      },
+    );
   }
 
   getSpeciesForm() {
@@ -152,6 +164,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
     }).toList());
 
     return Material(
+      color: AppColors.backgroundColor,
       child: Container(
         width: double.infinity,
         height: double.infinity,
@@ -261,7 +274,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
                   imageUrl: imageUrlPlant,
                 );
                 context.read<PlantsStore>().addPlant(newPlant);
-                _closePopup();
+                _addedPlant();
               },
             ),
             const SizedBox(height: 10),

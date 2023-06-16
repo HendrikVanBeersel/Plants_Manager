@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plants_manager/themes/app_colors.dart';
 import 'package:plants_manager/widgets/add_plant_form.dart';
 
@@ -17,7 +16,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('add plant'),
+        title: const Text('add plant'),
       ),
       body: Center(
         child: Row(
