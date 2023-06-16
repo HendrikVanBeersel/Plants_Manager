@@ -196,6 +196,37 @@ class _AddPlantFormState extends State<AddPlantForm> {
                 ),
               ],
             ),
+            Row(
+              children: [
+                const Text("Location:"),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      hintText: 'Location',
+                      border: OutlineInputBorder(),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        location = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(children: [
+              const Text("Is outdoor:"),
+              const SizedBox(width: 10),
+              Switch(
+                value: isOutdoor,
+                onChanged: (value) {
+                  setState(() {
+                    isOutdoor = value;
+                  });
+                },
+              ),
+            ]),
             const SizedBox(height: 10),
             ElevatedButton(
               child: const Text('Add Plant'),
