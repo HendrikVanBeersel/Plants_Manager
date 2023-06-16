@@ -23,7 +23,7 @@ class Plant {
       this.nextWatering,
       this.notes,
       this.health = PlantHealth.healthy,
-      required this.waterFrequency});
+      this.waterFrequency});
 
   Plant.fromJson(Map<String, dynamic> json)
       : speciesID = json['speciesID'],

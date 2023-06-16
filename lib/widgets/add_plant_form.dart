@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plants_manager/models/plant.dart';
 import 'package:plants_manager/models/plant_species.dart';
 import 'package:plants_manager/stores/plants_store.dart';
 import 'package:plants_manager/utils/constants.dart';
@@ -233,6 +234,33 @@ class _AddPlantFormState extends State<AddPlantForm> {
               onPressed: () {
                 // Perform the plant adding logic
                 // ...
+                int selectedSpeciesID = 0;
+                if (selectedSpecies == null) {
+                  int newGeneratedID =
+                      context.read<PlantsStore>().allSpecies.length + 1;
+
+                  PlantSpecies newSpecies = PlantSpecies(
+                    speciesID: newGeneratedID,
+                    name: speciesName,
+                    latinName: latinName,
+                    description: description,
+                    waterNeed: waterNeed,
+                    sunlight: sunlight,
+                    imageUrl: imageUrlSpecies,
+                  );
+                  context.read<PlantsStore>().addSpecies(newSpecies);
+                  selectedSpeciesID = newGeneratedID;
+                } else {
+                  selectedSpeciesID = selectedSpecies!.speciesID;
+                }
+                Plant newPlant = Plant(
+                  speciesID: selectedSpeciesID,
+                  nickname: nickname,
+                  isOutdoor: isOutdoor,
+                  location: location,
+                  imageUrl: imageUrlPlant,
+                );
+                context.read<PlantsStore>().addPlant(newPlant);
                 _closePopup();
               },
             ),
