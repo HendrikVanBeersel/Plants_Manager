@@ -3,8 +3,10 @@ import 'package:plants_manager/models/plant.dart';
 
 class PlantCard extends StatefulWidget {
   final Plant plant;
+  final bool brief;
 
-  const PlantCard({Key? key, required this.plant}) : super(key: key);
+  const PlantCard({Key? key, required this.plant, this.brief = false})
+      : super(key: key);
 
   @override
   _PlantCardState createState() => _PlantCardState();
@@ -35,12 +37,12 @@ class _PlantCardState extends State<PlantCard> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              imageWidget,
+              if (!widget.brief) imageWidget,
               Text(widget.plant.nickname),
               Text(widget.plant.getSpecies.name),
               Text(widget.plant.getSpecies.waterNeed.toString()),
               Text(widget.plant.getSpecies.sunlight.toString()),
-              Text(widget.plant.isOutdoor.toString()),
+              if (!widget.brief) Text(widget.plant.isOutdoor.toString()),
               Text(widget.plant.health.toString()),
             ],
           ),

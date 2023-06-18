@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class AllPlantsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Plant> plants = context.read<PlantsStore>().allPlants;
+    List<Plant> plants = context.watch<PlantsStore>().allPlants;
     return Scaffold(
       appBar: AppBar(
         title: Text('All Plants'),
@@ -22,4 +22,3 @@ class AllPlantsScreen extends StatelessWidget {
     );
   }
 }
-

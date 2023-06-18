@@ -5,7 +5,7 @@ class ThirstyPlantsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Thirty'),
+        title: Text('Thirsty'),
       ),
       body: Center(
         child: Text('Thirsty Page'),

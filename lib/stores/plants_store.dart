@@ -115,6 +115,7 @@ class PlantsStore extends ChangeNotifier {
         _plants = Map<String, Plant>.from(decodedPlants);
       }
     }
+    _wasUpdated.updateAll((key, value) => value = true);
 
     notifyListeners();
   }
