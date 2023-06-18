@@ -43,14 +43,11 @@ class _RoomsScreenState extends State<RoomsScreen> {
               ),
               if (roomToShow == room)
                 //does not work because there are 2 scrolls in 1
-                ListView.builder(
-                  itemCount: roomsWithPlants[room]!.length,
-                  itemBuilder: (context, index) {
-                    List<Plant> plants = roomsWithPlants[room]!;
-                    final plant = plants[index];
-                    return PlantCard(plant: plant, brief: true);
-                  },
-                ),
+                for (Plant plant in roomsWithPlants[room]!)
+                  PlantCard(
+                    plant: plant,
+                    brief: true,
+                  ),
             ]);
           }),
     );
