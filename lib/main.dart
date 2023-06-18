@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<PlantsStore>().loadState;
     return MaterialApp(
       title: 'Flutter App',
       theme: AppTheme.mainTheme(),

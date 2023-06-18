@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:plants_manager/models/plant_species.dart';
 import 'package:plants_manager/testData/list_plants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/foundation.dart';
 
 import '../models/plant.dart';
 import '../utils/constants.dart';
@@ -89,5 +93,29 @@ class PlantsStore extends ChangeNotifier {
       }
     }
     return waterFrequency!;
+  }
+
+  Future<void> saveState() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('plants', json.encode(_plants));
+    prefs.setString('species', json.encode(_species));
+  }
+
+  Future<void> loadState() async {
+    final prefs = await SharedPreferences.getInstance();
+    final plantsJson = prefs.getString('plants');
+    final speciesJson = prefs.getString('species');
+
+    if (speciesJson != null) {
+      final decodedSpecies = json.decode(speciesJson);
+      _species = Map<int, PlantSpecies>.from(decodedSpecies);
+
+      if (plantsJson != null) {
+        final decodedPlants = json.decode(plantsJson);
+        _plants = Map<String, Plant>.from(decodedPlants);
+      }
+    }
+
+    notifyListeners();
   }
 }
