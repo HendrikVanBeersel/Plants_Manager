@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plants_manager/models/plant.dart';
+import 'package:plants_manager/screens/plant_info_screen.dart';
 
 class PlantCard extends StatefulWidget {
   final Plant plant;
@@ -32,6 +33,12 @@ class _PlantCardState extends State<PlantCard> {
           setState(() {
             isSelected = !isSelected;
           });
+        },
+        onDoubleTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PlantInfoScreen(plant: widget.plant)));
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),

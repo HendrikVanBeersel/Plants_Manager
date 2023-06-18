@@ -66,15 +66,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
               backgroundColor: AppColors.primaryColor),
           BottomNavigationBarItem(
               icon: Icon(Icons.pageview),
-              label: 'Page 1',
+              label: 'all plants',
               backgroundColor: AppColors.primaryColor),
           BottomNavigationBarItem(
               icon: Icon(Icons.pages),
-              label: 'Page 2',
+              label: 'rooms',
               backgroundColor: AppColors.primaryColor),
           BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              label: 'Page 3',
+              icon: Icon(Icons.add_circle),
+              label: 'add Plant',
               backgroundColor: AppColors.primaryColor),
         ],
       ),

@@ -43,7 +43,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return const HappyPlants();
+        return HappyPlants();
       },
     );
   }
