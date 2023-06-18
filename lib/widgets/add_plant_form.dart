@@ -38,6 +38,7 @@ class _AddPlantFormState extends State<AddPlantForm> {
   }
 
   void _addedPlant() {
+    context.read<PlantsStore>().saveState;
     Navigator.of(context).pop();
     showDialog(
       context: context,
